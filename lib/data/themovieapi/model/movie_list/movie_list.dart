@@ -18,8 +18,8 @@ class MovieList with _$MovieList {
 
 extension ParseToDomain on MovieList {
   List<MovieEntity> toDomain() {
-    if(results!=null){
-    return results!.map((movie) => movie.toDomain()).toList();
+    if (results != null) {
+      return results!.map((movie) => movie.toDomain()).toList();
     }
     throw Exception('results is null');
   }

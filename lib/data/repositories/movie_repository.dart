@@ -3,11 +3,13 @@ import 'package:movie_pagination/data/themovieapi/model/movie_list/movie_list.da
 import 'package:movie_pagination/data/themovieapi/themovieapi.dart';
 import 'package:movie_pagination/domain/failures/api_failure.dart';
 import 'package:movie_pagination/domain/model/movie_entity.dart';
+import 'package:movie_pagination/domain/repositories/imovie_repository.dart';
 
-class MovieRepository {
+class MovieRepository implements IMovieRepository {
   MovieRepository({required this.remoteDataSource});
   final TheMovieApi remoteDataSource;
 
+  @override
   Future<Either<ApiFailure, List<MovieEntity>>> getMovies(int page) async {
     try {
       final response = await remoteDataSource.getPopularMovies(page);

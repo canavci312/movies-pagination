@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:movie_pagination/data/repositories/movie_repository.dart';
 import 'package:movie_pagination/domain/model/movie_entity.dart';
+import 'package:movie_pagination/domain/repositories/imovie_repository.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 part 'movie_list_event.dart';
@@ -27,7 +27,7 @@ class MovieListBloc extends Bloc<MovieListEvent, MovieListState> {
       transformer: throttleDroppable(throttleDuration),
     );
   }
-  final MovieRepository _movieRepository;
+  final IMovieRepository _movieRepository;
   int _pageNumber = 1;
   FutureOr<void> _onMoviesFetched(
     MoviesLoaded event,

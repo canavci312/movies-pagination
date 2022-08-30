@@ -4,12 +4,12 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:movie_pagination/data/repositories/movie_repository.dart';
 import 'package:movie_pagination/domain/failures/api_failure.dart';
 import 'package:movie_pagination/domain/model/movie_entity.dart';
+import 'package:movie_pagination/domain/repositories/imovie_repository.dart';
 import 'package:movie_pagination/presentation/movie_list/movie_list.dart';
 
-class MockMovieRepository extends Mock implements MovieRepository {}
+class MockMovieRepository extends Mock implements IMovieRepository {}
 
 void main() {
   final mockData = List.generate(
@@ -36,7 +36,7 @@ void main() {
       ],
     );
     blocTest<MovieListBloc, MovieListState>(
-      'fetches initial movies',
+      'fetches next page of movies',
       build: () => MovieListBloc(mockRepository),
       seed: () =>
           MovieListState(status: MovieListStatus.loaded, movies: mockData),

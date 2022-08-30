@@ -10,7 +10,7 @@ enum MovieListStatus {
 @freezed
 class MovieListState with _$MovieListState {
   const factory MovieListState({
-   required MovieListStatus status,
+    required MovieListStatus status,
     List<MovieEntity>? movies,
-  })=_MovieListState;
+  }) = _MovieListState;
 }

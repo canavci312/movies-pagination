@@ -25,11 +25,12 @@ class Movie with _$Movie {
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
 }
+
 extension ParseToDomain on Movie {
   MovieEntity toDomain() {
     return MovieEntity(
       url: 'https://image.tmdb.org/t/p/w500/$posterPath',
-      avgRating: voteAverage??0.0,
+      avgRating: voteAverage ?? 0.0,
     );
   }
 }
